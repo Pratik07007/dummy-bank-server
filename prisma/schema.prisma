@@ -13,6 +13,8 @@ model User{
   lName  String
   email String @unique
   phone String @unique
+  password String
+  isVerified Boolean @default(false)
   balance Balance?
   citizenship CitizenShip?
   address Address[]
@@ -20,7 +22,7 @@ model User{
 
 model Balance{
   id Int @id @default(autoincrement())
-  amount Int
+  amount Int 
   userId Int @unique
   user User @relation(fields: [userId],references: [id])
 }
